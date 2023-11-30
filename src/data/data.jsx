@@ -351,3 +351,62 @@ export const data = {
     },
   ],
 };
+
+export const detail = {
+  kind: "youtube#videoListResponse",
+  etag: "a_FezqrMiutZmuMQ26k5gjOx1C0",
+  items: [
+    {
+      kind: "youtube#video",
+      etag: "QTNO9oCGndjjD9cpJ7ZX1cCu-mY",
+      id: "Yppae7mKmcw",
+      snippet: {
+        publishedAt: "2014-12-22T14:49:18Z",
+        channelId: "UCE9dVgMIrkY5gHFKu6N44_w",
+        title: "CodigoDelSur - Mobile & Web App Development Company",
+        description:
+          "CodigoDelSur, a development company based in Uruguay, specializing in mobile app development and design for Silicon Valley. We pride ourselves on quality work while still having fun. Since 2007, we have been growing exponentially, incorporating the most creative members of our community. We have been honored to work with clients such as Kindara and Toymail. \n\nFor more information on us or our services, visit our website today!\n\nhttp://www.codigodelsur.com/website/",
+        thumbnails: {
+          default: {
+            url: "https://i.ytimg.com/vi/Yppae7mKmcw/default.jpg",
+            width: 120,
+            height: 90,
+          },
+          medium: {
+            url: "https://i.ytimg.com/vi/Yppae7mKmcw/mqdefault.jpg",
+            width: 320,
+            height: 180,
+          },
+          high: {
+            url: "https://i.ytimg.com/vi/Yppae7mKmcw/hqdefault.jpg",
+            width: 480,
+            height: 360,
+          },
+          standard: {
+            url: "https://i.ytimg.com/vi/Yppae7mKmcw/sddefault.jpg",
+            width: 640,
+            height: 480,
+          },
+          maxres: {
+            url: "https://i.ytimg.com/vi/Yppae7mKmcw/maxresdefault.jpg",
+            width: 1280,
+            height: 720,
+          },
+        },
+        channelTitle: "CodigoDelSur",
+        tags: ["Codigodelsur mobile app development startups"],
+        categoryId: "22",
+        liveBroadcastContent: "none",
+        localized: {
+          title: "CodigoDelSur - Mobile & Web App Development Company",
+          description:
+            "CodigoDelSur, a development company based in Uruguay, specializing in mobile app development and design for Silicon Valley. We pride ourselves on quality work while still having fun. Since 2007, we have been growing exponentially, incorporating the most creative members of our community. We have been honored to work with clients such as Kindara and Toymail. \n\nFor more information on us or our services, visit our website today!\n\nhttp://www.codigodelsur.com/website/",
+        },
+      },
+    },
+  ],
+  pageInfo: {
+    totalResults: 1,
+    resultsPerPage: 1,
+  },
+};

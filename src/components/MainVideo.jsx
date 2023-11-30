@@ -11,14 +11,13 @@ const MainVideo = ({ video }) => {
         allow="autoplay; encrypted-media"
       />
       <div className="mt-2">
-        {/* Usar dangerouslySetInnerHTML con precaución */}
         <h1
-          className="text-2xl font-bold"
+          className="text-2xl font-bold min-h-[4rem]"
           dangerouslySetInnerHTML={createMarkup(video?.snippet.title)}
         ></h1>
         <Link
           to={`/detail/${video?.id.videoId}`}
-          className="mt-5 bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded-md float-right shadow-lg hover:shadow-xl transition duration-300 ease-in-out"
+          className="mt-5 py-3 px-6 w-full lg:w-auto text-xl lg:text-base text-center bg-primary hover:bg-primary-hover text-white font-bold rounded-md float-right shadow-lg hover:shadow-xl transition duration-300 ease-in-out"
         >
           Video Details
         </Link>

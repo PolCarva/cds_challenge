@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../stables";
-import { data } from "../data/data";
+import { data, detail } from "../data/data";
 
 export const getVideos = async (query) => {
   return data;
@@ -16,6 +16,7 @@ export const getVideos = async (query) => {
 };
 
 export const getVideoById = async (id) => {
+  return detail;
   const response = await axios.get(`${BASE_URL}/videos`, {
     params: {
       part: "snippet",
@@ -24,6 +25,5 @@ export const getVideoById = async (id) => {
       id,
     },
   });
-  console.log(response.data);
   return response.data;
 }

@@ -12,7 +12,6 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
   const publishedDate = new Date(video?.snippet.publishedAt);
   let timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true });
 
-  // Delete the prefix "about", "over" and "almost" (native from date-fns)
   timeAgo = timeAgo
     .replace("about ", "")
     .replace("over ", "")
@@ -40,14 +39,13 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
       </div>
       <div className="flex flex-col gap-2 px-2 py-2 lg:pr-4 lg:pl-0">
         <span
-          className="text-sm h-fit font-bold line-clamp-2 text-ellipsis"
+          className="text-lg lg:text-sm h-fit font-bold line-clamp-2 text-ellipsis"
           dangerouslySetInnerHTML={createMarkup(video?.snippet.title)}
         ></span>
         <div>
           <span className="text-sm h-fit line-clamp-2 text-ellipsis">
             {video?.snippet.channelTitle}
           </span>
-          {/* Fecha de publicado */}
           <span className="text-xs text-gray-500 text-start line-clamp-2 text-ellipsis">
             {timeAgo}
           </span>

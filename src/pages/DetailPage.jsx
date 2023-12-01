@@ -37,7 +37,7 @@ const DetailPage = () => {
       <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-2">
         <MainVideo video={video} isDetailPage={true} />
         <div className="w-1/3">
-          <h1 className="text-2xl font-bold mb-5">Video Details</h1>
+          <h1 className="text-2xl font-bold mb-5 min-h-[4rem] bg-red-50">Video Details</h1>
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
               <span className="text-sm text-gray-500">Description</span>

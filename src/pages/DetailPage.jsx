@@ -28,7 +28,7 @@ const DetailPage = () => {
             <img
               src="/img/hex.png"
               alt="Código del Sur Logo"
-              className="w-12 h-12 object-contain"
+              className="w-12 h-12 object-contain select-none"
             />
             <FaAngleLeft className="absolute group-hover:-rotate-12 transition-all ease-in-out text-white w-6 h-6 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]" />
           </Link>

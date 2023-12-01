@@ -41,7 +41,7 @@ const MainPage = () => {
           <img
             src="/img/logo.png"
             alt="Código del Sur Logo"
-            className="w-12 h-12 object-contain"
+            className="w-12 h-12 object-contain select-none"
           />
         </Link>
         <SearchBar

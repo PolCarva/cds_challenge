@@ -16,7 +16,7 @@ const MainVideo = ({ video, isDetailPage = false }) => {
         />
       ) : (
         <iframe
-          className="w-full aspect-video rounded-xl"
+          className="w-full aspect-video rounded-xl select-none"
           src={`https://www.youtube.com/embed/${video?.id.videoId}`}
           title={video?.snippet.title}
           allow="autoplay; encrypted-media"

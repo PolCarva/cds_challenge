@@ -37,11 +37,11 @@ const MainPage = () => {
   return (
     <div className="w-full h-fit px-5 flex flex-col gap-5">
       <Header>
-        <Link to="/">
+        <Link to="/" className="hover:scale-110 hover:rotate-12 transition-all ease-in-out">
           <img
             src="/img/logo.png"
             alt="Código del Sur Logo"
-            className="w-10 h-10 object-contain"
+            className="w-12 h-12 object-contain"
           />
         </Link>
         <SearchBar
@@ -49,8 +49,9 @@ const MainPage = () => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
+        <div>Likes</div>
       </Header>
-      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-5">
+      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-2">
         <MainVideo video={selectedVideo} />
         <RecommendedVideosContainer
           videos={videos}

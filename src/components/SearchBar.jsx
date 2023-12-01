@@ -1,7 +1,6 @@
 import { FaCircleXmark, FaMagnifyingGlass } from "react-icons/fa6";
 
 const SearchBar = ({ handleSearch, searchValue = null, setSearchValue }) => {
-
   const handleResetInput = () => {
     setSearchValue("");
   };
@@ -14,13 +13,10 @@ const SearchBar = ({ handleSearch, searchValue = null, setSearchValue }) => {
 
   return (
     <div className="flex items-center justify-center w-full lg:w-1/2 h-full relative">
-      <label htmlFor="search-input" className="sr-only">
-        Search Videos
-      </label>
       <input
-        id="search-input"
+        aria-label="Search Videos"
         type="text"
-        className="focus:border-primary w-full rounded-l-full h-full pl-4 text-sm text-gray-500 bg-white border border-gray-100 bg-transparent outline-none shadow-inner"
+        className="focus:border-primary w-full rounded-l-full h-full pl-4 text-sm text-gray-500 bg-white border border-gray-200 bg-transparent outline-none shadow-inner"
         placeholder="Search"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
@@ -28,14 +24,14 @@ const SearchBar = ({ handleSearch, searchValue = null, setSearchValue }) => {
       />
       {searchValue && (
         <FaCircleXmark
-          className="absolute right-[4rem] z-20 hover:text-red-500 cursor-pointer"
+          className="absolute right-[4rem] z-20 hover:text-red-500 transition-colors cursor-pointer"
           onClick={handleResetInput}
         />
       )}
-      <div className="group relative">
+      <div className="group relative h-full">
         <button
           onClick={handleSearch}
-          className="py-3 px-5 h-full rounded-r-full bg-gray-100 hover:bg-gray-200 hover:shadow-inner transition-colors ease-in-out"
+          className="px-5 h-full rounded-r-full bg-gray-100 hover:bg-gray-200 hover:shadow-inner transition-colors ease-in-out"
         >
           <FaMagnifyingGlass />
         </button>

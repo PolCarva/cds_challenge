@@ -6,7 +6,10 @@ const DarkModeSwitch = () => {
   const dispatch = useDispatch();
   const isDarkMode = useSelector((state) => state.isDarkMode.value);
   return (
-    <div onClick={() => dispatch(toggle())} className="cursor-pointer active:-rotate-90 transition-all">
+    <div
+      onClick={() => dispatch(toggle())}
+      className="cursor-pointer active:-rotate-90 transition-all dark:text-white"
+    >
       {isDarkMode === "light" ? (
         <IoSunnySharp className="h-6 w-6" />
       ) : (

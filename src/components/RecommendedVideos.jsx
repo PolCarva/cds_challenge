@@ -24,10 +24,10 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
 
   return (
     <div
-      className="w-full group h-fit flex flex-col items-center lg:flex-row gap-2 bg-white hover:bg-gray-50 rounded-xl cursor-pointer"
+      className="w-full group h-fit flex flex-col items-center lg:flex-row gap-2 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-xl cursor-pointer"
       onClick={handleRecommendedVideoClick}
     >
-      <div className="w-full lg:w-fit h-full bg-white group-hover:bg-gray-50 aspect-video relative">
+      <div className="w-full rounded-xl lg:w-fit h-full bg-white group-hover:bg-gray-50 dark:bg-gray-800 dark:group-hover:bg-gray-700 aspect-video relative">
         <img
           className="w-full lg:w-auto h-auto lg:h-32 rounded-xl"
           src={`${video?.snippet.thumbnails.medium.url}`}
@@ -46,7 +46,7 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
           <span className="text-sm h-fit line-clamp-2 text-ellipsis">
             {video?.snippet.channelTitle}
           </span>
-          <span className="text-xs text-gray-500 text-start line-clamp-2 text-ellipsis">
+          <span className="text-xs text-gray-500 dark:text-gray-400 text-start line-clamp-2 text-ellipsis">
             {timeAgo}
           </span>
         </div>

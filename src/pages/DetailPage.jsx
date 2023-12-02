@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { getVideoById } from "../api";
 import MainVideo from "../components/MainVideo";
+import { createMarkup } from "../utils";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -21,7 +22,7 @@ const DetailPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-fit px-5 flex flex-col gap-5">
+    <div className="w-full min-h-[100svh] h-fit px-5 flex flex-col gap-5 dark:bg-gray-800 dark:text-white">
       <Header>
         <div className="flex gap-5 hover:scale-110 hover:rotate-12 transition-all ease-in-out">
           <Link className="cursor-pointer relative group" to={-1}>
@@ -34,15 +35,24 @@ const DetailPage = () => {
           </Link>
         </div>
       </Header>
-      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-2">
-        <MainVideo video={video} isDetailPage={true} />
-        <div className="w-1/3">
-          <h1 className="text-2xl font-bold mb-5 min-h-[4rem] bg-red-50">Video Details</h1>
-          <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <span className="text-sm text-gray-500">Description</span>
-              <span className="text-lg">{video?.snippet.description}</span>
-            </div>
+
+      <div className="w-full lg:w-5/6 mx-auto">
+        <div className="grid grid-cols-6 mx-auto gap-5 w-full h-[70vh]">
+          <div className="col-span-6">
+            <h1
+              className="text-2xl font-bold min-h-[4rem] line-clamp-2 w-4/6"
+              dangerouslySetInnerHTML={createMarkup(video?.snippet.title)}
+            />
+          </div>
+          <div className="col-span-4">
+            <img
+              className="w-full aspect-video rounded-xl select-none"
+              src={video.snippet.thumbnails.maxres.url}
+              alt=""
+            />
+          </div>
+          <div className=" col-span-2">
+            <h2>Description</h2>
           </div>
         </div>
       </div>

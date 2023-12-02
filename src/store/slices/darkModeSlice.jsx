@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = localStorage.getItem("videoCount") || "light";
+const initialStateValue = localStorage.getItem("isDarkMode") || "light";
 
 export const darkModeSlice = createSlice({
   name: "isDarkMode",

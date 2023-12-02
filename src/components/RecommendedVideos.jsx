@@ -1,25 +1,11 @@
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "../utils";
 import { FaPlay } from "react-icons/fa6";
 
 import { createMarkup } from "../utils";
 
-import { useDispatch } from "react-redux";
-import { increase } from "../store/slices/videoCounterSlice";
-
 const RecommendedVideos = ({ video, setSelectedVideo }) => {
-  const dispatch = useDispatch();
-
-  const publishedDate = new Date(video?.snippet.publishedAt);
-  let timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true });
-
-  timeAgo = timeAgo
-    .replace("about ", "")
-    .replace("over ", "")
-    .replace("almost ", "");
-
   const handleRecommendedVideoClick = () => {
     setSelectedVideo(video);
-    dispatch(increase());
   };
 
   return (
@@ -47,7 +33,7 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
             {video?.snippet.channelTitle}
           </span>
           <span className="text-xs text-gray-500 dark:text-gray-400 text-start line-clamp-2 text-ellipsis">
-            {timeAgo}
+            {formatDistanceToNow(video?.snippet.publishedAt)}
           </span>
         </div>
       </div>

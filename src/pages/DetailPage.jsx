@@ -1,24 +1,28 @@
 import { Link, useParams } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa6";
+import { formatDate } from "../utils";
 
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
-import { getVideoById } from "../api";
-import MainVideo from "../components/MainVideo";
+import { getChannelData, getVideoById } from "../api";
 import { createMarkup } from "../utils";
 
 const DetailPage = () => {
   const { id } = useParams();
   const [video, setVideo] = useState(null);
+  const [channel, setChannel] = useState(null);
 
   useEffect(() => {
-    async function getVideo() {
+    async function getData() {
       const video = await getVideoById(id);
+      const channel = await getChannelData(video.items[0].snippet.channelId);
       setVideo(video.items[0]);
-      console.log(video);
-    }
+      setChannel(channel);
 
-    getVideo();
+      console.log(video.items[0]);
+      console.log(channel);
+    }
+    getData();
   }, []);
 
   return (
@@ -37,22 +41,48 @@ const DetailPage = () => {
       </Header>
 
       <div className="w-full lg:w-5/6 mx-auto">
-        <div className="grid grid-cols-6 mx-auto gap-5 w-full h-[70vh]">
-          <div className="col-span-6">
+        <div className="flex flex-wrap mx-auto gap-5 w-full">
+          <div className="w-full">
             <h1
-              className="text-2xl font-bold min-h-[4rem] line-clamp-2 w-4/6"
-              dangerouslySetInnerHTML={createMarkup(video?.snippet.title)}
+              className="text-2xl font-bold line-clamp-2 lg:w-4/6"
+              dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}
             />
           </div>
-          <div className="col-span-4">
-            <img
-              className="w-full aspect-video rounded-xl select-none"
-              src={video.snippet.thumbnails.maxres.url}
-              alt=""
-            />
-          </div>
-          <div className=" col-span-2">
-            <h2>Description</h2>
+          <div className="flex gap-5 flex-col lg:flex-row">
+            <div className="flex flex-col gap-2">
+              <img
+                className="w-full aspect-video rounded-xl object-cover select-none"
+                src={video?.snippet?.thumbnails?.maxres?.url}
+                alt={video?.snippet?.title}
+              />
+              <div className="flex gap-5 items-center justify-between">
+                <div className="flex items-center gap-5">
+                  <img
+                    className="w-12 h-12 rounded-full object-cover"
+                    src={channel?.thumbnails?.default?.url}
+                    alt={channel?.title}
+                  />
+                  <Link
+                    to={`https://www.youtube.com/${channel?.customUrl}`}
+                    target="_blank"
+                    className="flex flex-col justify-center"
+                  >
+                    <h2 className="text-xl font-bold">
+                      {video?.snippet?.channelTitle}
+                    </h2>
+                  </Link>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-300">
+                  {video && formatDate(video?.snippet?.publishedAt)}
+                </p>
+              </div>
+            </div>
+            <div className="w-full lg:w-2/3 max-h-[calc(80svh-2rem)] overflow-y-auto whitespace-break-spaces">
+              <h2 className="text-xl font-bold mb-2">Description</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-300 pb-5 lg:mb-0">
+                {video?.snippet?.description}
+              </p>
+            </div>
           </div>
         </div>
       </div>

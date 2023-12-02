@@ -410,3 +410,31 @@ export const detail = {
     resultsPerPage: 1,
   },
 };
+
+export const channel = {
+  title: "CodigoDelSur",
+  description: "Software development agency",
+  customUrl: "@codigodelsurmontevideo",
+  publishedAt: "2014-12-11T14:46:59Z",
+  thumbnails: {
+    default: {
+      url: "https://yt3.ggpht.com/ytc/APkrFKZqncRlS0vylvey9d-41SQC_xK3iUjQlCNJIYsDBQ=s88-c-k-c0x00ffffff-no-rj",
+      width: 88,
+      height: 88,
+    },
+    medium: {
+      url: "https://yt3.ggpht.com/ytc/APkrFKZqncRlS0vylvey9d-41SQC_xK3iUjQlCNJIYsDBQ=s240-c-k-c0x00ffffff-no-rj",
+      width: 240,
+      height: 240,
+    },
+    high: {
+      url: "https://yt3.ggpht.com/ytc/APkrFKZqncRlS0vylvey9d-41SQC_xK3iUjQlCNJIYsDBQ=s800-c-k-c0x00ffffff-no-rj",
+      width: 800,
+      height: 800,
+    },
+  },
+  localized: {
+    title: "CodigoDelSur",
+    description: "Software development agency",
+  },
+};

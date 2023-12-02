@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialStateValue = localStorage.getItem("videoCount")
   ? parseInt(localStorage.getItem("videoCount"))
-  : 1;
+  : 0;
 
 export const videoCounterSlice = createSlice({
   name: "videoCounter",

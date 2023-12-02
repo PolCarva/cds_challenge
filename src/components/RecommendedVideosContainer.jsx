@@ -5,7 +5,7 @@ import RecommendedVideos from "./RecommendedVideos";
 const RecommendedVideosContainer = ({ videos, setSelectedVideo }) => {
   const videoCounter = useSelector((state) => state.videoCounter.value);
   return (
-    <div className="flex flex-col w-full lg:w-1/3 gap-5">
+    <div className="flex flex-col w-full lg:w-1/3 gap-5 max-h-[80svh] pb-5 lg:mb-0">
       <span className="font-bold text-2xl order-2 lg:order-1">
         Recommended Videos:
       </span>
@@ -21,7 +21,8 @@ const RecommendedVideosContainer = ({ videos, setSelectedVideo }) => {
         })}
       </div>
       <p className="text-xl text-center order-1 lg:order-2">
-        Total videos watched: <span className="font-medium">{videoCounter}</span>
+        Total videos watched:
+        <span className="font-medium"> {videoCounter}</span>
       </p>
     </div>
   );

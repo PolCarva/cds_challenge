@@ -9,7 +9,7 @@ const RecommendedVideosContainer = ({ videos, setSelectedVideo }) => {
       <span className="font-bold text-2xl order-2 lg:order-1">
         Recommended Videos:
       </span>
-      <div className="w-full aspect-video order-2 lg:order-1 flex-1 flex flex-col bg-white dark:bg-gray-800 gap-5 overflow-visible lg:overflow-y-auto">
+      <div className="w-full pb-5 lg:pb-0 aspect-video order-2 lg:order-1 flex-1 flex flex-col bg-white dark:bg-gray-800 gap-5 overflow-visible lg:overflow-y-auto">
         {videos.map((video) => {
           return (
             <RecommendedVideos

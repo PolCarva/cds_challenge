@@ -6,14 +6,17 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { getChannelData, getVideoById } from "../api";
 import { createMarkup } from "../utils";
+import DetailSkeleton from "../components/Skeletons/DetailSkeleton";
 
 const DetailPage = () => {
   const { id } = useParams();
   const [video, setVideo] = useState(null);
   const [channel, setChannel] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function getData() {
+      setIsLoading(true);
       const video = await getVideoById(id);
       const channel = await getChannelData(video.items[0].snippet.channelId);
       setVideo(video.items[0]);
@@ -21,6 +24,7 @@ const DetailPage = () => {
 
       console.log(video.items[0]);
       console.log(channel);
+      //setIsLoading(false);
     }
     getData();
   }, []);
@@ -40,60 +44,64 @@ const DetailPage = () => {
         </div>
       </Header>
 
-      <div className="w-full lg:w-5/6 mx-auto">
-        <div className="flex flex-wrap mx-auto gap-5 w-full">
-          <div className="w-full">
-            <h1
-              className="text-2xl font-bold line-clamp-2 lg:w-4/6"
-              dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}
-            />
-          </div>
-          <div className="flex gap-5 flex-col lg:flex-row">
-            <div className="flex flex-col gap-2">
-              <img
-                className="w-full aspect-video rounded-xl min-w-[50vw] object-cover select-none"
-                src={
-                  video?.snippet?.thumbnails?.maxres?.url ||
-                  "https://i.ytimg.com/vi/default/maxresdefault.jpg"
-                }
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://i.ytimg.com/vi/default/maxresdefault.jpg";
-                }}
-                alt={video?.snippet?.title}
+      {isLoading && <DetailSkeleton />}
+
+      {!isLoading && (
+        <div className="w-full lg:w-5/6 mx-auto">
+          <div className="flex flex-wrap mx-auto gap-5 w-full">
+            <div className="w-full">
+              <h1
+                className="text-2xl font-bold line-clamp-2 lg:w-4/6"
+                dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}
               />
-              <div className="flex gap-5 items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <img
-                    className="w-12 h-12 rounded-full object-cover"
-                    src={channel?.thumbnails?.default?.url}
-                    alt={channel?.title}
-                  />
-                  <Link
-                    to={`https://www.youtube.com/${channel?.customUrl}`}
-                    target="_blank"
-                    className="flex flex-col justify-center"
-                  >
-                    <h2 className="text-xl font-bold">
-                      {video?.snippet?.channelTitle}
-                    </h2>
-                  </Link>
+            </div>
+            <div className="flex gap-5 flex-col lg:flex-row">
+              <div className="flex flex-col gap-2">
+                <img
+                  className="w-full aspect-video rounded-xl min-w-[50vw] object-cover select-none"
+                  src={
+                    video?.snippet?.thumbnails?.maxres?.url ||
+                    "https://i.ytimg.com/vi/default/maxresdefault.jpg"
+                  }
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://i.ytimg.com/vi/default/maxresdefault.jpg";
+                  }}
+                  alt={video?.snippet?.title}
+                />
+                <div className="flex gap-5 items-center justify-between">
+                  <div className="flex items-center gap-5">
+                    <img
+                      className="w-12 h-12 rounded-full object-cover"
+                      src={channel?.thumbnails?.default?.url}
+                      alt={channel?.title}
+                    />
+                    <Link
+                      to={`https://www.youtube.com/${channel?.customUrl}`}
+                      target="_blank"
+                      className="flex flex-col justify-center"
+                    >
+                      <h2 className="text-xl font-bold">
+                        {video?.snippet?.channelTitle}
+                      </h2>
+                    </Link>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-300">
+                    {video && formatDate(video?.snippet?.publishedAt)}
+                  </p>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-300">
-                  {video && formatDate(video?.snippet?.publishedAt)}
+              </div>
+              <div className="w-full lg:w-2/3 max-h-[calc(80svh-2rem)] overflow-y-auto whitespace-break-spaces">
+                <h2 className="text-xl font-bold mb-2">Description</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-300 pb-5 lg:mb-0">
+                  {video?.snippet?.description}
                 </p>
               </div>
             </div>
-            <div className="w-full lg:w-2/3 max-h-[calc(80svh-2rem)] overflow-y-auto whitespace-break-spaces">
-              <h2 className="text-xl font-bold mb-2">Description</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-300 pb-5 lg:mb-0">
-                {video?.snippet?.description}
-              </p>
-            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

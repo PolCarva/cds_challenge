@@ -3,7 +3,7 @@ import { BASE_URL } from "../stables";
 import { channel, data, detail } from "../data/data";
 
 export const getVideos = async (query) => {
-  return data;
+  //return data;
   try {
     const response = await axios.get(`${BASE_URL}/search`, {
       params: {
@@ -21,7 +21,7 @@ export const getVideos = async (query) => {
 };
 
 export const getVideoById = async (id) => {
-  return detail;
+  //return detail;
   try {
     const response = await axios.get(`${BASE_URL}/videos`, {
       params: {
@@ -39,7 +39,7 @@ export const getVideoById = async (id) => {
 };
 
 export const getChannelData = async (channelId) => {
-  return channel
+  //return channel
   try {
     const response = await axios.get(
       `${BASE_URL}/channels?id=${channelId}&part=snippet&key=${

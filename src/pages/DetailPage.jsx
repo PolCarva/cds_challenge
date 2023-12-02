@@ -58,15 +58,15 @@ const DetailPage = () => {
             <div className="flex gap-5 flex-col lg:flex-row">
               <div className="flex flex-col gap-2">
                 <img
-                  className="w-full aspect-video rounded-xl min-w-[50vw] object-cover select-none"
+                  className="w-full aspect-video rounded-xl object-cover select-none"
                   src={
                     video?.snippet?.thumbnails?.maxres?.url ||
-                    "https://i.ytimg.com/vi/default/maxresdefault.jpg"
+                    "/img/noImage.png"
                   }
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src =
-                      "https://i.ytimg.com/vi/default/maxresdefault.jpg";
+                      "/img/noImage.png";
                   }}
                   alt={video?.snippet?.title}
                 />

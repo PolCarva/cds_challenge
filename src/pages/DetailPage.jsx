@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getChannelData, getVideoById } from "../api";
 import { createMarkup } from "../utils";
 import DetailPageSkeleton from "../components/Skeletons/DetailPageSkeleton";
+import toast from "react-hot-toast";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -21,12 +22,13 @@ const DetailPage = () => {
       const channel = await getChannelData(video.items[0].snippet.channelId);
       setVideo(video.items[0]);
       setChannel(channel);
-
-      console.log(video.items[0]);
-      console.log(channel);
       setIsLoading(false);
     }
-    getData();
+    try {
+      getData();
+    } catch (error) {
+      toast.error("Error fetching data");
+    }
   }, []);
 
   return (
@@ -65,12 +67,11 @@ const DetailPage = () => {
                   }
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src =
-                      "/img/noImage.png";
+                    e.target.src = "/img/noImage.png";
                   }}
                   alt={video?.snippet?.title}
                 />
-                <div className="flex gap-5 items-center justify-between">
+                <div className="flex gap-5 items-center justify-between mb-4">
                   <div className="flex items-center gap-5">
                     <img
                       className="w-12 h-12 rounded-full object-cover"

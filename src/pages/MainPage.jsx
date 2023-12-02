@@ -6,11 +6,13 @@ import SearchBar from "../components/SearchBar.jsx";
 import Header from "../components/Header.jsx";
 import RecommendedVideosContainer from "../components/RecommendedVideosContainer.jsx";
 import { Link } from "react-router-dom";
+import MainPageSkeleton from "../components/Skeletons/MainPageSkeleton.jsx";
 
 const MainPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getVideosByQuery = async (query) => {
     const results = await getVideos(query);
@@ -28,7 +30,14 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    getVideosByQuery("CodigoDelSur - Mobile & Web App Development Company");
+    try {
+      setIsLoading(true);
+      getVideosByQuery("CodigoDelSur - Mobile & Web App Development Company");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   return (
@@ -51,11 +60,17 @@ const MainPage = () => {
         />
       </Header>
       <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-2 dark:bg-gray-800 dark:text-white">
-        <MainVideo video={selectedVideo} />
-        <RecommendedVideosContainer
-          videos={videos}
-          setSelectedVideo={setSelectedVideo}
-        />
+        {isLoading ? (
+          <MainPageSkeleton />
+        ) : (
+          <>
+            <MainVideo video={selectedVideo} />
+            <RecommendedVideosContainer
+              videos={videos}
+              setSelectedVideo={setSelectedVideo}
+            />
+          </>
+        )}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { getChannelData, getVideoById } from "../api";
 import { createMarkup } from "../utils";
-import DetailSkeleton from "../components/Skeletons/DetailSkeleton";
+import DetailPageSkeleton from "../components/Skeletons/DetailPageSkeleton";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -24,7 +24,7 @@ const DetailPage = () => {
 
       console.log(video.items[0]);
       console.log(channel);
-      //setIsLoading(false);
+      setIsLoading(false);
     }
     getData();
   }, []);
@@ -44,7 +44,7 @@ const DetailPage = () => {
         </div>
       </Header>
 
-      {isLoading && <DetailSkeleton />}
+      {isLoading && <DetailPageSkeleton />}
 
       {!isLoading && (
         <div className="w-full lg:w-5/6 mx-auto">

@@ -1,6 +1,6 @@
 import React from "react";
 
-const DetailSkeleton = () => {
+const DetailPageSkeleton = () => {
   return (
     <div className="w-full lg:w-5/6 mx-auto">
       <div className="flex flex-wrap mx-auto gap-5 w-full">
@@ -34,4 +34,4 @@ const DetailSkeleton = () => {
   );
 };
 
-export default DetailSkeleton;
+export default DetailPageSkeleton;

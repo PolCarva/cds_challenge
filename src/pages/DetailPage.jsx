@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa6";
 import { formatDate } from "../utils";
 
@@ -10,6 +10,7 @@ import DetailPageSkeleton from "../components/Skeletons/DetailPageSkeleton";
 import toast from "react-hot-toast";
 
 const DetailPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [video, setVideo] = useState(null);
   const [channel, setChannel] = useState(null);
@@ -28,11 +29,12 @@ const DetailPage = () => {
       getData();
     } catch (error) {
       toast.error("Error fetching data");
+      navigate("/");
     }
   }, []);
 
   return (
-    <div className="w-full min-h-[100svh] h-fit px-5 flex flex-col gap-5 dark:bg-gray-800 dark:text-white">
+    <div className="w-full h-[100svh] px-5 flex flex-col dark:bg-gray-800 dark:text-white">
       <Header>
         <div className="flex gap-5 hover:scale-110 hover:rotate-12 transition-all ease-in-out">
           <Link className="cursor-pointer relative group" to={-1}>
@@ -57,7 +59,7 @@ const DetailPage = () => {
                 dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}
               />
             </div>
-            <div className="flex gap-5 flex-col lg:flex-row">
+            <div className="flex gap-5 flex-col lg:flex-row flex">
               <div className="flex flex-col gap-2">
                 <img
                   className="w-full aspect-video rounded-xl object-cover select-none"

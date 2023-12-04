@@ -11,7 +11,7 @@ const MainVideo = ({ video }) => {
     dispatch(increase());
   };
   return (
-    <div className="w-full lg:w-1/2 h-fit flex flex-col gap-5">
+    <div className="w-full lg:w-1/2 h-fit flex flex-col justify-between">
       <iframe
         className="w-full aspect-video rounded-xl select-none"
         src={`https://www.youtube.com/embed/${video?.id?.videoId}`}

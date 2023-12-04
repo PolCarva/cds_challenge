@@ -41,7 +41,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-fit min-h-[100svh] px-5 flex flex-col gap-5 dark:bg-gray-800">
+    <div className="w-full h-[100svh] px-5 flex flex-col gap-5 dark:bg-gray-800">
       <Header>
         <Link
           to="/"
@@ -59,7 +59,7 @@ const MainPage = () => {
           setSearchValue={setSearchValue}
         />
       </Header>
-      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 min-h-[calc(80svh-1.25rem)] pb-2 dark:bg-gray-800 dark:text-white">
+      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 pb-2 dark:bg-gray-800 dark:text-white">
         {isLoading ? (
           <MainPageSkeleton />
         ) : (

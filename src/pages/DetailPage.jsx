@@ -59,7 +59,7 @@ const DetailPage = () => {
                 dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}
               />
             </div>
-            <div className="flex gap-5 flex-col lg:flex-row flex">
+            <div className="flex gap-5 flex-col lg:flex-row">
               <div className="flex flex-col gap-2">
                 <img
                   className="w-full aspect-video rounded-xl object-cover select-none"

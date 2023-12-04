@@ -74,6 +74,7 @@ const MainPage = () => {
           <>
             <MainVideo video={selectedVideo} />
             <RecommendedVideosContainer
+              selectedVideoId={selectedVideo?.id?.videoId}
               videos={videos}
               setSelectedVideo={setSelectedVideo}
             />

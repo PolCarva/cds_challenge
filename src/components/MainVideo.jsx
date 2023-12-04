@@ -11,7 +11,7 @@ const MainVideo = ({ video }) => {
     dispatch(increase());
   };
   return (
-    <div className="w-full lg:w-1/2 h-fit flex flex-col justify-between">
+    <div className="w-full lg:w-1/2 h-fit flex flex-col gap-5 lg:gap-0 justify-between">
       <iframe
         className="w-full aspect-video rounded-xl select-none"
         src={`https://www.youtube.com/embed/${video?.id?.videoId}`}
@@ -19,7 +19,7 @@ const MainVideo = ({ video }) => {
         allow="autoplay; encrypted-media"
       />
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-5 lg:gap-2">
         <h1
           className="text-2xl font-bold min-h-[4rem] line-clamp-2"
           dangerouslySetInnerHTML={createMarkup(video?.snippet?.title)}

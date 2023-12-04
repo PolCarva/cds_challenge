@@ -77,25 +77,26 @@ const DetailPage = () => {
                   alt={video?.snippet?.title}
                 />
                 <div className="flex gap-5 items-center justify-between mb-4">
-                  <div className="flex items-center gap-5">
-                    <img
-                      className="w-12 h-12 rounded-full object-cover"
-                      src={channel?.thumbnails?.default?.url}
-                      alt={channel?.title}
-                    />
+                  <div className="flex items-center gap-5 justify-between w-full" >
                     <Link
                       to={`https://www.youtube.com/${channel?.customUrl}`}
                       target="_blank"
-                      className="flex flex-col justify-center"
+                      className="flex flex-row gap-2 items-center w-2/3"
                     >
-                      <h2 className="text-xl font-bold">
+                      <img
+                        className="w-12 h-12 rounded-full object-cover"
+                        src={channel?.thumbnails?.default?.url}
+                        alt={channel?.title}
+                      />
+
+                      <h2 className="text-xl font-bold break-words">
                         {video?.snippet?.channelTitle}
                       </h2>
                     </Link>
-                  </div>
                   <p className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     {video && formatDate(video?.snippet?.publishedAt)}
                   </p>
+                  </div>
                 </div>
               </div>
               <div className="w-full lg:w-2/3 max-h-[calc(80svh-2rem)] overflow-y-auto whitespace-break-spaces">

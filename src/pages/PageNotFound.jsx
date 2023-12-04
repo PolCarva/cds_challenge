@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const PageNotFound = () => {
   return (
-    <div className="px-5 min-h-[100svh] flex flex-col justify-between">
+    <div className="px-5 min-h-[100svh] flex flex-col bg-white dark:bg-gray-800">
       <Header>
         <Link
           to="/"
@@ -17,7 +17,18 @@ const PageNotFound = () => {
           />
         </Link>
       </Header>
-      <div className="flex flex-1 flex-col items-center justify-center w-full h-full">Not found</div>
+      <div className="flex flex-col items-center justify-center flex-1">
+        <span className="text-9xl font-bold text-gray-800 dark:text-gray-600">404</span>
+        <h1 className="text-4xl font-semibold text-gray-700 dark:text-white mb-4">
+          Page not found
+        </h1>
+        <Link
+          to="/"
+          className="bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 rounded transition duration-300"
+        >
+          Go back to home
+        </Link>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Bienvenido al desafío de frontend de CodigoDelSur. Este challenge es una oportunidad para demostrar tus habilidades desarrollando una aplicación de streaming de video similar a YouTube. La aplicación está construida utilizando Vite, Tailwind CSS, React, además de React Router DOM para la navegación y Redux para la gestión del estado.
+Bienvenido al desafío de frontend de CodigoDelSur. Este challenge es una oportunidad para demostrar tus habilidades desarrollando una aplicación de streaming de video similar a YouTube. La aplicación está construida utilizando Vite, Tailwind CSS, React, además de React Router DOM para la navegación, Redux para la gestión del estado y React Hot Toast para el manejo de alertas.
 
 ## Objetivo
 
@@ -40,13 +40,20 @@ Para empezar a usar la aplicación, simplemente ejecuta el comando `npm run dev`
 
 ## Estructura del Proyecto
 
+Las descripciones que has proporcionado son bastante claras y ofrecen una buena visión general de la estructura del proyecto. Sin embargo, algunas sugerencias pueden hacer que las descripciones sean aún más precisas y comprensibles:
+
+plaintext
+Copy code
 - `/src`: Contiene el código fuente de la aplicación.
-  - `/assets`: Directorio para recursos estáticos.
   - `/components`: Componentes de React reutilizables.
   - `/pages`: Páginas de la aplicación.
-  - `/store`: Configuración de Redux.
-- `/public`: Archivos estáticos y de medios.
-
+  - `/store`: Configuración y gestión del estado con Redux.
+  - `/constants`: Constantes y valores inmutables utilizados en la aplicación.
+  - `/utils`: Funciones de utilidad utilizadas por diferentes componentes.
+  - `/data`: Datos de muestra para casos de prueba o en situaciones de error.
+  - `/api`: Funciones para realizar solicitudes a la API de YouTube.
+  
+- `/public`: Archivos estáticos y multimedia.
 
 ## Contacto
 

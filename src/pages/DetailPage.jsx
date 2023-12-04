@@ -28,13 +28,16 @@ const DetailPage = () => {
     try {
       getData();
     } catch (error) {
-      toast.error("Error fetching data");
       navigate("/");
+      console.error(error);
+      error.message === "API Quota exceeded"
+        ? toast.error("API Quota exceeded, please try again later")
+        : toast.error("Error fetching data");
     }
   }, []);
 
   return (
-    <div className="w-full h-[100svh] px-5 flex flex-col dark:bg-gray-800 dark:text-white">
+    <div className="w-full h-fit min-h-[100svh] px-5 flex flex-col dark:bg-gray-800 dark:text-white">
       <Header>
         <div className="flex gap-5 hover:scale-110 hover:rotate-12 transition-all ease-in-out">
           <Link className="cursor-pointer relative group" to={-1}>
@@ -90,7 +93,7 @@ const DetailPage = () => {
                       </h2>
                     </Link>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-300">
+                  <p className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     {video && formatDate(video?.snippet?.publishedAt)}
                   </p>
                 </div>

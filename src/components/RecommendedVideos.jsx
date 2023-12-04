@@ -15,7 +15,7 @@ const RecommendedVideos = ({ video, setSelectedVideo }) => {
     >
       <div className="w-full rounded-xl lg:w-fit h-full bg-white group-hover:bg-gray-50 dark:bg-gray-800 dark:group-hover:bg-gray-700 aspect-video relative">
         <img
-          className="w-full lg:w-auto h-auto lg:h-32 rounded-xl"
+          className="w-full h-auto lg:h-32 rounded-xl object-cover"
           src={`${video?.snippet.thumbnails.medium.url}`}
           title={`${video?.snippet.title}`}
         />

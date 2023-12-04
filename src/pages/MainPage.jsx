@@ -7,6 +7,7 @@ import Header from "../components/Header.jsx";
 import RecommendedVideosContainer from "../components/RecommendedVideosContainer.jsx";
 import { Link } from "react-router-dom";
 import MainPageSkeleton from "../components/Skeletons/MainPageSkeleton.jsx";
+import toast from "react-hot-toast";
 
 const MainPage = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -15,11 +16,18 @@ const MainPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const getVideosByQuery = async (query) => {
-    const results = await getVideos(query);
-    setVideos(
-      results.items.filter((video) => video.id.kind === "youtube#video")
-    );
-    setSelectedVideo(results.items[0]);
+    try {
+      const results = await getVideos(query);
+      setVideos(
+        results.items.filter((video) => video.id.kind === "youtube#video")
+      );
+      setSelectedVideo(results.items[0]);
+    } catch (error) {
+      console.error(error);
+      error.message === "API Quota exceeded"
+        ? toast.error("API Quota exceeded, please try again later")
+        : toast.error("Error getting videos");
+    }
   };
 
   const handleSearch = () => {
@@ -41,7 +49,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-[100svh] px-5 flex flex-col gap-5 dark:bg-gray-800">
+    <div className="w-full h-fit px-5 flex flex-col gap-5 dark:bg-gray-800">
       <Header>
         <Link
           to="/"
@@ -59,7 +67,7 @@ const MainPage = () => {
           setSearchValue={setSearchValue}
         />
       </Header>
-      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full flex-1 pb-2 dark:bg-gray-800 dark:text-white">
+      <div className="flex flex-col lg:flex-row gap-5 justify-center w-full h-full flex-1 pb-2 dark:bg-gray-800 dark:text-white">
         {isLoading ? (
           <MainPageSkeleton />
         ) : (

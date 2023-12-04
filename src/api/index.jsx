@@ -16,7 +16,11 @@ export const getVideos = async (query) => {
     return response.data;
   } catch (error) {
     console.error("Error getting videos:", error);
-    throw error;
+    if (error.response && error.response.status === 403) {
+      throw new Error("API Quota exceeded");
+    } else {
+      throw error;
+    }
   }
 };
 
@@ -33,8 +37,11 @@ export const getVideoById = async (id) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error getting video details:", error);
-    throw error;
+    if (error.response && error.response.status === 403) {
+      throw new Error("API Quota exceeded");
+    } else {
+      throw error;
+    }
   }
 };
 
@@ -49,7 +56,10 @@ export const getChannelData = async (channelId) => {
 
     return response.data.items[0]?.snippet;
   } catch (error) {
-    console.error("Error getting channel data:", error);
-    throw error;
+    if (error.response && error.response.status === 403) {
+      throw new Error("API Quota exceeded");
+    } else {
+      throw error;
+    }
   }
 };
